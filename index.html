@@ -45,6 +45,13 @@
 .asc-checklist-item { display: flex; align-items: flex-start; gap: 10px; padding: 4px 0; font-size: 13.5px; line-height: 1.55; color: #1C1C1C; }
 .asc-checklist-subs { margin-left: 22px; margin-top: 2px; margin-bottom: 4px; }
 .asc-checklist-sub { display: flex; align-items: flex-start; gap: 10px; padding: 3px 0; font-size: 12.5px; line-height: 1.55; color: #444; }
+/* Mobile: hide the hero photo + fade overlay; let the headline span the full width */
+@media (max-width: 600px) {
+  .asc-hero { height: auto !important; padding: 8px 0 0 !important; background: transparent !important; }
+  .asc-hero-img, .asc-hero-fade { display: none !important; }
+  .asc-hero-text { position: static !important; transform: none !important; max-width: 100% !important; left: 0 !important; }
+  .asc-hero-text h1 { font-size: 24px !important; }
+}
 </style>
 
 <div class="asc-app" id="asc-app"></div>
@@ -648,10 +655,10 @@
   
   function renderIntro() {
     return renderHeader() +
-      '<div style="position: relative; margin: 16px 0 0 0; height: 280px; overflow: hidden; border-radius: 4px; background: #fff;">' +
-        '<img src="' + HERO_URL + '" alt="" style="position: absolute; right: 0; top: 0; height: 100%; width: 55%; object-fit: cover; object-position: center 30%;" />' +
-        '<div style="position: absolute; inset: 0; background: linear-gradient(90deg, #fff 0%, #fff 45%, rgba(255,255,255,0.85) 55%, rgba(255,255,255,0) 75%);"></div>' +
-        '<div style="position: absolute; left: 28px; top: 50%; transform: translateY(-50%); max-width: 380px;">' +
+      '<div class="asc-hero" style="position: relative; margin: 16px 0 0 0; height: 280px; overflow: hidden; border-radius: 4px; background: #fff;">' +
+        '<img class="asc-hero-img" src="' + HERO_URL + '" alt="" style="position: absolute; right: 0; top: 0; height: 100%; width: 55%; object-fit: cover; object-position: center 30%;" />' +
+        '<div class="asc-hero-fade" style="position: absolute; inset: 0; background: linear-gradient(90deg, #fff 0%, #fff 45%, rgba(255,255,255,0.85) 55%, rgba(255,255,255,0) 75%);"></div>' +
+        '<div class="asc-hero-text" style="position: absolute; left: 28px; top: 50%; transform: translateY(-50%); max-width: 380px;">' +
           '<div style="font-size: 11px; letter-spacing: 2px; color: #45AADD; font-weight: 700; margin-bottom: 12px;">FOR EMPLOYERS</div>' +
           '<h1 style="font-size: 28px; line-height: 1.18; margin-bottom: 14px; color: #1C1C1C;">Curious what work-based learning experience is best for your organization?</h1>' +
           '<p style="font-size: 14.5px; color: #444;">Take a quick assessment to see which experiences fit your team\'s capacity \u2014 and what it would take to host one.</p>' +
