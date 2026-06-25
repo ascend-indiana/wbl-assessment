@@ -1124,7 +1124,6 @@
       var blob = new Blob([html], { type: 'text/html' });
       var blobUrl = URL.createObjectURL(blob);
       var w = window.open(blobUrl, '_blank');
-      if (!w) { URL.revokeObjectURL(blobUrl); alert('Pop-up blocked. Please allow pop-ups for this site to print the checklist.'); return; }
       setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 60000);
     } catch(e) {
       var w = window.open('', '_blank');
